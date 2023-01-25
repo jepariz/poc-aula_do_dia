@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model aulas {
+  id                 Int       @id @default(autoincrement())
+  data               DateTime  @db.Date
+  turma_id           Int
+  materia_id         Int
+  conteudo_previsto  String
+  conteudo_prox_aula String
+  created_at         DateTime? @default(now()) @db.Date
+  materias           materias  @relation(fields: [materia_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  turmas             turmas    @relation(fields: [turma_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model materias {
+  id         Int       @id @default(autoincrement())
+  nome       String
+  created_at DateTime? @default(now()) @db.Date
+  aulas      aulas[]
+}
+
+model turmas {
+  id         Int       @id @default(autoincrement())
+  nome       String
+  created_at DateTime? @default(now()) @db.Date
+  aulas      aulas[]
+}
