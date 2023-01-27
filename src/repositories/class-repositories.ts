@@ -9,8 +9,6 @@ async function insertLesson(lesson: Lesson) {
 
     const turma = await prisma.turmas.findFirst({ where: { nome: lesson.turmas } })
 
-    console.log(turma.id)
-
     const materia = await prisma.materias.findFirst({ where: { nome: lesson.materias } });
 
     return prisma.aulas.create({

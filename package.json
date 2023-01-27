@@ -7,7 +7,11 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc src/index.ts",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "prisma:seed": "npx prisma db seed"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seeds.ts"
   },
   "repository": {
     "type": "git",
