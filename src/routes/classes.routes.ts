@@ -11,7 +11,7 @@ const router = Router();
 router.post("/lessons", validateSchema(lessonSchema), createNewLesson)
 router.get("/lessons", listLessons);
 //router.get("/lessons:id", listUniqueLesson);
-//router.patch("/lessons", validateSchema(nextLessonSchema), createNextLesson)
+//router.patch("/lessons:id", validateSchema(nextLessonSchema), createNextLesson)
 //router.delete("/lessons", deleteLesson)
 
 

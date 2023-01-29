@@ -1,9 +1,16 @@
-
-export type Lesson = {
-    id?: number,
+type LessonEntity = {
+    id: number,
     data: Date,
-    turmas: string,
-    materias: string,
-    conteudo_previsto: string,
-};
+    turma_id: number ,
+    materia_id: number,
+    conteudo_previsto: string, 
+}
 
+
+type Lesson = Omit<LessonEntity, "id">
+
+
+export{
+    LessonEntity,
+    Lesson
+}

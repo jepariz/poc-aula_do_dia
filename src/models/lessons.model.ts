@@ -1,10 +1,9 @@
 import Joi from "joi";
-import JoiDateFactory from "@joi/date";
 
  export const lessonSchema = Joi.object({
     data: Joi.date().required(),
-    turma: Joi.string().required(),
-    materia: Joi.string().required(),
+    turma_id: Joi.number().required(),
+    materia_id: Joi.number().required(),
     conteudo_previsto: Joi.string().required() 
 })
 
