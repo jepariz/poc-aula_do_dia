@@ -16,10 +16,16 @@ type ClassEntity = {
 
 type Class = Omit<ClassEntity, "id">
 
+type SubjectEntity = {
+    id: number,
+    nome: string
+}
+
+type Subject = Omit<SubjectEntity, "id">
 
 export{
     LessonEntity,
     Lesson,
-    ClassEntity,
-    Class
+    Class,
+    Subject
 }
