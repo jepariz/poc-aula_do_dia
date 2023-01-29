@@ -22,8 +22,26 @@ async function findAllClasses() {
     return prisma.turmas.findMany()
 }
 
+async function findClassById(classId:number){
+    return prisma.turmas.findFirst({
+      where:{
+        id: classId
+      }
+    })
+}
+
+async function deleteClass(classId: number){
+    return prisma.turmas.delete({
+      where:{
+        id: classId
+      }
+    })
+}
+
 export {
     findClass,
     insertClass, 
-    findAllClasses
+    findAllClasses,
+    findClassById,
+    deleteClass
 }

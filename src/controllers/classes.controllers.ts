@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
 import { findAllClasses } from "../repositories/class-repositories.js";
-import insertNewClass from "../services/class-services.js";
+import {insertNewClass, deleteClassById} from "../services/class-services.js";
 import { Class } from "../types/lessons.type.js";
-
-
 
 async function createNewClass(req: Request, res: Response){
 
@@ -26,7 +24,23 @@ async function listClasses(req:Request, res: Response) {
     return res.send(resultado)
 }
 
+async function deleteClass(req: Request, res: Response) {
+    
+    const id = Number(req.params.id)
+
+    try{
+        await deleteClassById(id)
+        res.sendStatus(200)
+    
+        }catch(error) {
+            console.error(error)
+            res.sendStatus(500)
+        }
+    
+}
+
 export{
     createNewClass,
-    listClasses
+    listClasses,
+    deleteClass
 }

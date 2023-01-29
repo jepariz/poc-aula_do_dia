@@ -1,5 +1,6 @@
 import express, {Request, Response} from "express";
-import classesRouter from "./routes/lessons.routes.js";
+import lessonsRoutes from "./routes/lessons.routes.js";
+import classesRoutes from "./routes/classes.routes.js"
 
 
 const app = express();
@@ -8,7 +9,8 @@ app
   .use("/health", (req: Request, res:Response ) => {
     res.send("ok")
   })
-  .use(classesRouter)
+  .use(lessonsRoutes)
+  .use(classesRoutes)
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server running in port ${port}`));

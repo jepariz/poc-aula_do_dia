@@ -1,8 +1,8 @@
-import { findClass, insertClass } from "../repositories/class-repositories.js";
+import { findClass, insertClass, findClassById, deleteClass } from "../repositories/class-repositories.js";
 import { Class } from "../types/lessons.type.js";
 
 
-export default async function insertNewClass(className:Class) {
+async function insertNewClass(className:Class) {
 
     const nome = className.nome.toLocaleLowerCase()
 
@@ -13,4 +13,22 @@ export default async function insertNewClass(className:Class) {
     }
     
     await insertClass(className)
+}
+
+async function deleteClassById(classId:number) {
+
+
+    const classExists = await findClassById(classId)
+
+    if(!classExists){
+        throw ("Essa turma não existe")
+    }
+    
+    await deleteClass(classId)
+}
+
+
+export {
+    insertNewClass,
+    deleteClassById
 }
