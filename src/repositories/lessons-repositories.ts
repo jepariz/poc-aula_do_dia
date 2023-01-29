@@ -1,5 +1,4 @@
 import prisma from "../database/database.js";
-import { subjectSchema } from "../models/lessons.model.js";
 import { Lesson } from "../types/lessons.type.js";
 
 async function findLessons() {
@@ -47,7 +46,7 @@ async function findDuplicateLesson(date:Date, subjectId: number, classId:number)
 }
 
 async function insertLesson(lesson: Lesson) {
-  
+
     return prisma.aulas.create({
         data: {
         data: lesson.data,

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {findLessons, insertLesson} from "../repositories/lessons-repositories.js";
+import {findLessons} from "../repositories/lessons-repositories.js";
 import { Lesson } from "../types/lessons.type.js";
 import {createLesson} from "../services/lessons-services.js"
 

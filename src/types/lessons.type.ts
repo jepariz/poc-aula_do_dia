@@ -9,8 +9,17 @@ type LessonEntity = {
 
 type Lesson = Omit<LessonEntity, "id">
 
+type ClassEntity = {
+    id: number,
+    nome: string
+}
+
+type Class = Omit<ClassEntity, "id">
+
 
 export{
     LessonEntity,
-    Lesson
+    Lesson,
+    ClassEntity,
+    Class
 }
