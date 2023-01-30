@@ -1,5 +1,5 @@
 import { Lesson } from "../types/lessons.type.js";
-import {findClass, findSubject, findDuplicateLesson, insertLesson} from "../repositories/lessons-repositories.js";
+import {findClass, findSubject, findDuplicateLesson, insertLesson, getLessonById} from "../repositories/lessons-repositories.js";
 
 
 async function createLesson(lesson:Lesson) {
@@ -24,6 +24,18 @@ async function createLesson(lesson:Lesson) {
     await insertLesson(lesson)
 }
 
+async function findLessonById(lessonId:number) {
+    
+    const lessonExists = await getLessonById(lessonId)
+
+    if(!lessonExists){
+        throw new Error("Essa aula não existe");
+    }
+
+    return lessonExists
+}
+
 export {
-    createLesson
+    createLesson,
+    findLessonById
 }

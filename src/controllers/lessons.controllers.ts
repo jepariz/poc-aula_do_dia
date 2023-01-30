@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import {findLessons} from "../repositories/lessons-repositories.js";
 import { Lesson } from "../types/lessons.type.js";
-import {createLesson} from "../services/lessons-services.js"
+import {createLesson, findLessonById} from "../services/lessons-services.js"
 
 async function listLessons(req: Request, res: Response) {
     const resultado = await findLessons();
@@ -23,8 +23,23 @@ async function createNewLesson(req: Request, res: Response){
     }
 }
 
+async function listLessonsById(req: Request, res: Response) {
+    
+    const id = Number(req.params.id)
+
+    try{
+       const lesson =  await findLessonById(id)
+        res.status(200).send(lesson)
+    
+        }catch(error) {
+            console.error(error)
+            res.sendStatus(500)
+        }
+}
+
 export{
     listLessons,
-    createNewLesson
+    createNewLesson,
+    listLessonsById
 }
 

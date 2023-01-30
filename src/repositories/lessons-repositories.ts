@@ -57,12 +57,21 @@ async function insertLesson(lesson: Lesson) {
     })
 }
 
+async function getLessonById(lessonId:number) {
+
+  return prisma.aulas.findFirst({
+    where: {id: lessonId}
+  })
+  
+}
+
 export {
     findLessons,
     findClass,
     findSubject,
     findDuplicateLesson,
-    insertLesson
+    insertLesson,
+    getLessonById
 }
 
 
