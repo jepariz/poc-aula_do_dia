@@ -1,5 +1,5 @@
 import prisma from "../database/database.js";
-import { Lesson } from "../types/lessons.type.js";
+import { Lesson, LessonEntity } from "../types/lessons.type.js";
 
 async function findLessons() {
     return prisma.aulas.findMany({
@@ -62,7 +62,16 @@ async function getLessonById(lessonId:number) {
   return prisma.aulas.findFirst({
     where: {id: lessonId}
   })
+}
+
+async function updateLesson(id: number, conteudo: string) {
   
+  return prisma.aulas.update({
+    where: {id},
+    data: {
+      conteudo_previsto: conteudo
+    }
+  })
 }
 
 export {
@@ -71,7 +80,8 @@ export {
     findSubject,
     findDuplicateLesson,
     insertLesson,
-    getLessonById
+    getLessonById,
+    updateLesson
 }
 
 

@@ -1,5 +1,6 @@
 import { Lesson } from "../types/lessons.type.js";
-import {findClass, findSubject, findDuplicateLesson, insertLesson, getLessonById} from "../repositories/lessons-repositories.js";
+import {findClass, findSubject, findDuplicateLesson, insertLesson, getLessonById, updateLesson} from "../repositories/lessons-repositories.js";
+import { prisma } from "@prisma/client";
 
 
 async function createLesson(lesson:Lesson) {
@@ -35,7 +36,20 @@ async function findLessonById(lessonId:number) {
     return lessonExists
 }
 
+async function updateLessonById(id:number, conteudo: string) {
+
+    const lessonExists = await getLessonById(id)
+
+    if(!lessonExists){
+        throw new Error("Essa aula não existe");
+    }
+
+    return await updateLesson(id, conteudo)
+}
+
+
 export {
     createLesson,
-    findLessonById
+    findLessonById,
+    updateLessonById
 }
