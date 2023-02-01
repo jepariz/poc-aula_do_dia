@@ -17,10 +17,9 @@ async function insertNewClass(className:string) {
 
 async function deleteClassById(classId:number) {
 
-    if(!classId || isNaN(classId)){
+    if(isNaN(classId)){
         throw httpStatus[422]
     }
-
 
     const classExists = await findClassById(classId)
 

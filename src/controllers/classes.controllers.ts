@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import httpStatus from "http-status";
 import { findAllClasses } from "../repositories/class-repositories";
 import {insertNewClass, deleteClassById} from "../services/class-services";
-import { Class } from "../types/lessons.type";
 
 async function createNewClass(req: Request, res: Response){
 
@@ -37,7 +36,6 @@ async function deleteClass(req: Request, res: Response) {
         res.sendStatus(200)
     
         }catch(error) {
-            console.log(error)
             if(error === "Unprocessable Entity"){
                 res.sendStatus(422)
             } 

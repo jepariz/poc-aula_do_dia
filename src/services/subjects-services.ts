@@ -1,5 +1,5 @@
+import httpStatus from "http-status";
 import { findSubject, insertSubject, findSubjectById, deleteSubject } from "../repositories/subjects-repositories";
-import { Subject } from "../types/lessons.type";
 
 
 async function insertNewSubject(subjectName: string) {
@@ -9,7 +9,7 @@ async function insertNewSubject(subjectName: string) {
     const newSubject = await findSubject(nome)
 
     if(newSubject){
-        throw ("Matéria já cadastrada")
+        throw httpStatus[409]
     }
     
     await insertSubject(subjectName)
@@ -17,11 +17,14 @@ async function insertNewSubject(subjectName: string) {
 
 async function deleteSubjectById(subjectId:number) {
 
+    if(isNaN(subjectId)){
+        throw httpStatus[422]
+    }
 
     const subjectExists = await findSubjectById(subjectId)
 
     if(!subjectExists){
-        throw ("Essa matéria não existe")
+        throw httpStatus[404]
     }
     
     await deleteSubject(subjectId)
