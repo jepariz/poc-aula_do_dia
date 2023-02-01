@@ -31,19 +31,19 @@ async function main() {
         data: [
             {
                 "data": "2022-01-01T00:00:00.000Z",
-                "turma_id": 1,
+                "turma_id": 22,
                 "materia_id": 1,
                 "conteudo_previsto": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed augue nulla. Integer commodo lectus ut mi laoreet blandit. Aliquam."
             },
             {
                 "data": "2022-01-01T00:00:00.000Z",
-                "turma_id": 2,
-                "materia_id": 1,
+                "turma_id": 23,
+                "materia_id": 3,
                 "conteudo_previsto": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed augue nulla. Integer commodo lectus ut mi laoreet blandit. Aliquam."
             },
             {
                 "data": "2022-01-01T00:00:00.000Z",
-                "turma_id": 1,
+                "turma_id": 24,
                 "materia_id": 2,
                 "conteudo_previsto": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed augue nulla. Integer commodo lectus ut mi laoreet blandit. Aliquam."
             },

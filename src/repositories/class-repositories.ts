@@ -2,7 +2,7 @@ import prisma from "../database/database";
 import { Class } from "../types/lessons.type";
 
 
-async function findClass(className:string): Promise<Class>{
+async function findClass(className:string){
     return prisma.turmas.findFirst({
       where:{
         nome: className
@@ -10,10 +10,10 @@ async function findClass(className:string): Promise<Class>{
     })
 }
 
-async function insertClass(className:Class) {
+async function insertClass(className:string) {
     return prisma.turmas.create({
       data:{
-        nome: className.nome
+        nome: className
       }
     })
 }

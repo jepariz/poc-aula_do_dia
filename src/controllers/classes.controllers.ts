@@ -1,19 +1,19 @@
 import { Request, Response } from "express";
+import httpStatus from "http-status";
 import { findAllClasses } from "../repositories/class-repositories";
 import {insertNewClass, deleteClassById} from "../services/class-services";
 import { Class } from "../types/lessons.type";
 
 async function createNewClass(req: Request, res: Response){
 
-    const newClass = res.locals as Class
-
+    const newClass = res.locals.nome 
+   
     try{
     await insertNewClass(newClass)
     res.sendStatus(200)
 
     }catch(error) {
-        console.error(error)
-        res.sendStatus(500)
+        res.status(409).send(error)
     }
 }
 
@@ -21,7 +21,11 @@ async function listClasses(req:Request, res: Response) {
    
     const resultado = await findAllClasses();
 
-    return res.send(resultado)
+    if(resultado.length < 1){
+        return res.status(404).send(httpStatus[404])
+    }
+
+    return res.status(200).send(resultado)
 }
 
 async function deleteClass(req: Request, res: Response) {
@@ -33,8 +37,7 @@ async function deleteClass(req: Request, res: Response) {
         res.sendStatus(200)
     
         }catch(error) {
-            console.error(error)
-            res.sendStatus(500)
+            res.status(404).send(error)
         }
     
 }
