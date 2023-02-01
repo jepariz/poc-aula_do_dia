@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import {findLessons} from "../repositories/lessons-repositories.js";
-import { Lesson } from "../types/lessons.type.js";
-import {createLesson, findLessonById, updateLessonById, deleteLessonById} from "../services/lessons-services.js"
+import {findLessons} from "../repositories/lessons-repositories";
+import { Lesson } from "../types/lessons.type";
+import {createLesson, findLessonById, updateLessonById, deleteLessonById} from "../services/lessons-services"
 
 async function listLessons(req: Request, res: Response) {
     const resultado = await findLessons();

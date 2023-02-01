@@ -1,4 +1,4 @@
-import prisma from "../src/database/database.js";
+import prisma from "../src/database/database";
 
 async function main() {
     await prisma.materias.createMany({

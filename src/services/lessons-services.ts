@@ -1,5 +1,5 @@
-import { Lesson } from "../types/lessons.type.js";
-import {findClass, findSubject, findDuplicateLesson, insertLesson, getLessonById, updateLesson, deleteLesson} from "../repositories/lessons-repositories.js";
+import { Lesson } from "../types/lessons.type";
+import {findClass, findSubject, findDuplicateLesson, insertLesson, getLessonById, updateLesson, deleteLesson} from "../repositories/lessons-repositories";
 import { prisma } from "@prisma/client";
 
 

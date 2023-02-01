@@ -1,5 +1,5 @@
-import prisma from "../database/database.js";
-import { Class } from "../types/lessons.type.js";
+import prisma from "../database/database";
+import { Class } from "../types/lessons.type";
 
 
 async function findClass(className:string): Promise<Class>{

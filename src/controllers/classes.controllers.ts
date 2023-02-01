@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { findAllClasses } from "../repositories/class-repositories.js";
-import {insertNewClass, deleteClassById} from "../services/class-services.js";
-import { Class } from "../types/lessons.type.js";
+import { findAllClasses } from "../repositories/class-repositories";
+import {insertNewClass, deleteClassById} from "../services/class-services";
+import { Class } from "../types/lessons.type";
 
 async function createNewClass(req: Request, res: Response){
 

@@ -1,5 +1,5 @@
-import { findClass, insertClass, findClassById, deleteClass } from "../repositories/class-repositories.js";
-import { Class } from "../types/lessons.type.js";
+import { findClass, insertClass, findClassById, deleteClass } from "../repositories/class-repositories";
+import { Class } from "../types/lessons.type";
 
 
 async function insertNewClass(className:Class) {

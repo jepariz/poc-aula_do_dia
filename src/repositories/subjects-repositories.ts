@@ -1,5 +1,5 @@
-import prisma from "../database/database.js";
-import { Subject } from "../types/lessons.type.js";
+import prisma from "../database/database";
+import { Subject } from "../types/lessons.type";
 
 
 async function findSubject(subjectName:string): Promise<Subject>{

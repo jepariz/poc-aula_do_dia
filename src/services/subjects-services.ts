@@ -1,5 +1,5 @@
-import { findSubject, insertSubject, findSubjectById, deleteSubject } from "../repositories/subjects-repositories.js";
-import { Subject } from "../types/lessons.type.js";
+import { findSubject, insertSubject, findSubjectById, deleteSubject } from "../repositories/subjects-repositories";
+import { Subject } from "../types/lessons.type";
 
 
 async function insertNewSubject(subjectName: Subject) {

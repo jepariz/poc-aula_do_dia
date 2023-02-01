@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { createNewLesson, listLessons, listLessonsById, updateLesson, deleteLesson } from "../controllers/lessons.controllers.js";
-import { validateSchema } from "../middlewares/schemaValidator.js";
-import { contentSchema, lessonSchema} from "../models/lessons.model.js";
+import { createNewLesson, listLessons, listLessonsById, updateLesson, deleteLesson } from "../controllers/lessons.controllers";
+import { validateSchema } from "../middlewares/schemaValidator";
+import { contentSchema, lessonSchema} from "../models/lessons.model";
 
 const router = Router();
 

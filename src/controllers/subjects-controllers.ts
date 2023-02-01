@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { findAllSubjects} from "../repositories/subjects-repositories.js";
-import { insertNewSubject, deleteSubjectById } from "../services/subjects-services.js";
-import { Subject } from "../types/lessons.type.js";
+import { findAllSubjects} from "../repositories/subjects-repositories";
+import { insertNewSubject, deleteSubjectById } from "../services/subjects-services";
+import { Subject } from "../types/lessons.type";
 
 
 async function createNewSubject(req: Request, res: Response){

@@ -1,7 +1,7 @@
 import express, {Request, Response} from "express";
-import lessonsRoutes from "./routes/lessons.routes.js";
-import classesRoutes from "./routes/classes.routes.js"
-import SubjectsRoutes from "./routes/subjects.routes.js"
+import lessonsRoutes from "./routes/lessons.routes"
+import classesRoutes from "./routes/classes.routes"
+import SubjectsRoutes from "./routes/subjects.routes"
 
 const app = express();
 app
@@ -15,4 +15,6 @@ app
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server running in port ${port}`));
+
+
 export default app;

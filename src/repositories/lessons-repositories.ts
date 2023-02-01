@@ -1,5 +1,5 @@
-import prisma from "../database/database.js";
-import { Lesson} from "../types/lessons.type.js";
+import prisma from "../database/database";
+import { Lesson} from "../types/lessons.type";
 
 async function findLessons() {
     return prisma.aulas.findMany({
