@@ -6,7 +6,7 @@ import { Subject } from "../types/lessons.type";
 
 async function createNewSubject(req: Request, res: Response){
 
-    const newSubject = res.locals as Subject
+    const newSubject = res.locals.nome 
 
     try{
     await insertNewSubject(newSubject)

@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "nodemon src/server.ts",
     "build": "tsc src/index.ts",
     "start": "node dist/index.js",
     "prisma:seed": "npx prisma db seed",

@@ -21,7 +21,7 @@ async function listClasses(req:Request, res: Response) {
    
     const resultado = await findAllClasses();
 
-    if(resultado.length < 1){
+    if(resultado.length === 0){
         return res.status(404).send(httpStatus[404])
     }
 
@@ -37,9 +37,14 @@ async function deleteClass(req: Request, res: Response) {
         res.sendStatus(200)
     
         }catch(error) {
-            res.status(404).send(error)
+            console.log(error)
+            if(error === "Unprocessable Entity"){
+                res.sendStatus(422)
+            } 
+            if(error === "Not Found"){
+                res.sendStatus(404)
         }
-    
+    }
 }
 
 export{

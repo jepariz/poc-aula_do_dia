@@ -10,10 +10,10 @@ async function findSubject(subjectName:string): Promise<Subject>{
     })
 }
 
-async function insertSubject(subjectName:Subject) {
+async function insertSubject(subjectName:string) {
     return prisma.materias.create({
       data:{
-        nome: subjectName.nome
+        nome: subjectName
       }
     })
 }

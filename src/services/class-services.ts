@@ -1,6 +1,5 @@
 import httpStatus from "http-status";
 import { findClass, insertClass, findClassById, deleteClass } from "../repositories/class-repositories";
-import { Class } from "../types/lessons.type";
 
 
 async function insertNewClass(className:string) {
@@ -17,6 +16,10 @@ async function insertNewClass(className:string) {
 }
 
 async function deleteClassById(classId:number) {
+
+    if(!classId || isNaN(classId)){
+        throw httpStatus[422]
+    }
 
 
     const classExists = await findClassById(classId)

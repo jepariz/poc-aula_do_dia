@@ -2,9 +2,9 @@ import { findSubject, insertSubject, findSubjectById, deleteSubject } from "../r
 import { Subject } from "../types/lessons.type";
 
 
-async function insertNewSubject(subjectName: Subject) {
+async function insertNewSubject(subjectName: string) {
 
-    const nome = subjectName.nome.toLocaleLowerCase()
+    const nome = subjectName.toLocaleLowerCase()
 
     const newSubject = await findSubject(nome)
 
