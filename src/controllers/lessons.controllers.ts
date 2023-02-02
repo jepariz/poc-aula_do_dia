@@ -69,9 +69,13 @@ async function deleteLesson(req: Request, res: Response) {
         await deleteLessonById(id)
          res.sendStatus(200)
      }catch(error) {
-          console.error(error)
-          res.sendStatus(500)
+        if(error === "Unprocessable Entity"){
+            res.status(422).send(error)
+        } 
+        if(error === "Not Found"){
+            res.sendStatus(404)
   } 
+}
 }
 
 export{

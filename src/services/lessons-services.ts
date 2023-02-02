@@ -51,13 +51,7 @@ async function findLessonById(lessonId:number) {
 
 async function updateLessonById(id:number, conteudo: string) {
 
-    if(!id ){
-        console.log(id)
-        throw httpStatus[422]
-    } 
-
     if(!conteudo){
-        console.log(conteudo)
         throw httpStatus[422]
     }
 
@@ -69,9 +63,10 @@ async function updateLessonById(id:number, conteudo: string) {
 
 async function deleteLessonById(lessonId:number) {
 
-    findLessonById(lessonId)
+    await findLessonById(lessonId)
 
-    return await deleteLesson(lessonId)
+    const deleted = await deleteLesson(lessonId)
+    return deleted
 }
 
 

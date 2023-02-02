@@ -135,6 +135,33 @@ describe('UPDATE /aulas', () => {
     })
 })
 
+describe('DELETE /aulas', () => { 
+
+
+    it('Should respond with status 404 if no lesson', async () => {
+        const result = await api.delete(`/aulas/1`)
+        expect(result.status).toEqual(404)
+    })
+    
+
+    it('Should respond with status 200 if deleted', async () => {
+
+        const lesson = await createLesson()
+
+        const lessonResponse = await api.post("/aulas").send(lesson);
+        const lessonId:number = lessonResponse.body.id
+
+        const result = await api.delete(`/aulas/${lessonId}`)
+        expect(result.status).toEqual(200)
+    })
+
+    afterAll(async () => {
+        await prisma.aulas.deleteMany({})
+        await prisma.turmas.deleteMany({})
+        await prisma.materias.deleteMany({})
+    })
+})
+
 // describe ('GET /aulas', () => {
 
 //     it('Should respond with status 404 if no lesson',async () => {
