@@ -15,11 +15,10 @@ async function createNewLesson(req: Request, res: Response){
 
     try{
     await createLesson(lesson)
-    res.sendStatus(200)
+    res.sendStatus(201)
 
     }catch(error) {
-        console.error(error)
-        res.sendStatus(500)
+        res.status(409).send(error)
     }
 }
 

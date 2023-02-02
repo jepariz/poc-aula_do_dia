@@ -11,7 +11,7 @@ async function createNewSubject(req: Request, res: Response){
 
     try{
     await insertNewSubject(newSubject)
-    res.sendStatus(200)
+    res.sendStatus(201)
 
     }catch(error) {
         res.status(409).send(error)

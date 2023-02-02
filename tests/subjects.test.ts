@@ -27,7 +27,7 @@ describe ('POST /materias', () => {
     })
 
 
-    it("returns 200 for valid params", async () => {
+    it("returns 201 for valid params", async () => {
             const body = {
               nome: 'literatura'
             };
@@ -41,7 +41,7 @@ describe ('POST /materias', () => {
 
             idUltimaMateria = materiaCriada.id
             
-            expect(status).toEqual(200);
+            expect(status).toEqual(201);
 			expect(materiaCriada).not.toBeNull();
         });
   

@@ -9,9 +9,10 @@ async function createNewClass(req: Request, res: Response){
    
     try{
     await insertNewClass(newClass)
-    res.sendStatus(200)
+    res.sendStatus(201)
 
     }catch(error) {
+        console.log(error)
         res.status(409).send(error)
     }
 }

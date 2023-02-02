@@ -27,7 +27,7 @@ describe ('POST /turmas', () => {
     })
 
 
-    it("returns 200 for valid params", async () => {
+    it("returns 201 for valid params", async () => {
             const body = {
               nome: '3D'
             };
@@ -41,7 +41,7 @@ describe ('POST /turmas', () => {
 
             idUltimaTurma = turmaCriada.id
             
-            expect(status).toEqual(200);
+            expect(status).toEqual(201);
 			expect(turmaCriada).not.toBeNull();
         });
   
@@ -80,4 +80,5 @@ describe ('GET /turmas', () => {
         const result = await api.get('/turmas')
         expect (result.status).toBe(404)
     })
+
 })
