@@ -37,3 +37,9 @@ const body = {
 
     return body;
   }
+
+export async function getLessonId() {
+
+const lessons = await prisma.aulas.findMany()
+return lessons
+}

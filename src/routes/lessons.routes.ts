@@ -8,7 +8,7 @@ const router = Router();
 router.post("/aulas", validateSchema(lessonSchema), createNewLesson)
 router.get("/aulas", listLessons);
 router.get("/aulas/:id", listLessonsById);
-router.patch("/aulas/:id", validateSchema(contentSchema), updateLesson)
+router.put("/aulas/:id", validateSchema(contentSchema), updateLesson)
 router.delete("/aulas/:id", deleteLesson)
 
 

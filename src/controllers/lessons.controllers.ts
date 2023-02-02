@@ -1,12 +1,18 @@
 import { Request, Response } from "express";
-import {findLessons} from "../repositories/lessons-repositories";
 import { Lesson } from "../types/lessons.type";
-import {createLesson, findLessonById, updateLessonById, deleteLessonById} from "../services/lessons-services"
+import {createLesson, findLessonById, updateLessonById, deleteLessonById, findAllLesson} from "../services/lessons-services"
+import httpStatus from "http-status";
+
 
 async function listLessons(req: Request, res: Response) {
-    const resultado = await findLessons();
 
-    return res.send(resultado)
+    try{
+        const resultado = await findAllLesson();
+        return res.send(resultado)
+    
+        }catch(error) {
+            res.status(404).send(error)
+        }   
 }
 
 async function createNewLesson(req: Request, res: Response){
@@ -14,8 +20,8 @@ async function createNewLesson(req: Request, res: Response){
     const lesson = res.locals as Lesson
 
     try{
-    await createLesson(lesson)
-    res.sendStatus(201)
+    const newLesson = await createLesson(lesson)
+    res.status(201).send(newLesson)
 
     }catch(error) {
         res.status(409).send(error)
@@ -44,12 +50,16 @@ async function updateLesson(req: Request, res: Response) {
     } 
 
     try{
-           await updateLessonById(data.id, data.conteudo)
-            res.sendStatus(200)
+           const update = await updateLessonById(data.id, data.conteudo)
+            res.status(200).send(update)
         }catch(error) {
-             console.error(error)
-             res.sendStatus(500)
+            if(error === "Unprocessable Entity"){
+                res.status(422).send(error)
+            } 
+            if(error === "Not Found"){
+                res.sendStatus(404)
      } 
+}
 }
 
 async function deleteLesson(req: Request, res: Response) {

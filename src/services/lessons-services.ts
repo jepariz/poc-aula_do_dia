@@ -1,5 +1,5 @@
 import { Lesson } from "../types/lessons.type";
-import {findClass, findSubject, findDuplicateLesson, insertLesson, getLessonById, updateLesson, deleteLesson} from "../repositories/lessons-repositories";
+import {findClass, findSubject, findDuplicateLesson, insertLesson, getLessonById, updateLesson, deleteLesson, findLessons} from "../repositories/lessons-repositories";
 import httpStatus from "http-status";
 
 
@@ -22,7 +22,20 @@ async function createLesson(lesson:Lesson) {
        throw httpStatus[409]
       } 
 
-    await insertLesson(lesson)
+    const newLesson = await insertLesson(lesson)
+
+    return newLesson
+}
+
+async function findAllLesson() {
+    
+    const lessonExists = await findLessons()
+
+    if(!lessonExists){
+        throw httpStatus[404]
+    }
+
+    return lessonExists
 }
 
 async function findLessonById(lessonId:number) {
@@ -38,9 +51,20 @@ async function findLessonById(lessonId:number) {
 
 async function updateLessonById(id:number, conteudo: string) {
 
-    findLessonById(id)
+    if(!id ){
+        console.log(id)
+        throw httpStatus[422]
+    } 
 
-    return await updateLesson(id, conteudo)
+    if(!conteudo){
+        console.log(conteudo)
+        throw httpStatus[422]
+    }
+
+    await findLessonById(id)
+
+    const update = await updateLesson(id, conteudo)
+    return update
 }
 
 async function deleteLessonById(lessonId:number) {
@@ -55,5 +79,6 @@ export {
     createLesson,
     findLessonById,
     updateLessonById,
-    deleteLessonById
+    deleteLessonById,
+    findAllLesson
 }

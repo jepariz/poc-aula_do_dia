@@ -1,5 +1,5 @@
 import prisma from "../database/database";
-import { Lesson} from "../types/lessons.type";
+import { Lesson, LessonEntity} from "../types/lessons.type";
 
 async function findLessons() {
     return prisma.aulas.findMany({
@@ -45,9 +45,9 @@ async function findDuplicateLesson(date:Date, subjectId: number, classId:number)
   });
 }
 
-async function insertLesson(lesson: Lesson) {
-
-    return prisma.aulas.create({
+async function insertLesson(lesson: Lesson) : Promise<LessonEntity> {
+ 
+ const newLesson = await prisma.aulas.create({
         data: {
         data: lesson.data,
         conteudo_previsto: lesson.conteudo_previsto,
@@ -55,6 +55,8 @@ async function insertLesson(lesson: Lesson) {
         materia_id: lesson.materia_id
         }
     })
+
+  return newLesson
 }
 
 async function getLessonById(lessonId:number) {
