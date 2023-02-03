@@ -37,8 +37,7 @@ async function listLessonsById(req: Request, res: Response) {
         res.status(200).send(lesson)
     
         }catch(error) {
-            console.error(error)
-            res.sendStatus(500)
+            res.sendStatus(404)
         }
 }
 

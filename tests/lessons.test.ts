@@ -162,13 +162,45 @@ describe('DELETE /aulas', () => {
     })
 })
 
-// describe ('GET /aulas', () => {
+describe ('GET /aulas', () => {
 
-//     it('Should respond with status 404 if no lesson',async () => {
+    beforeAll(async () => {
+        await prisma.aulas.deleteMany({})
+        await prisma.turmas.deleteMany({})
+        await prisma.materias.deleteMany({})
+    })
 
-//         const result = await api.get('/aulas')
-//         console.log(result.body)
-//         expect (result.status).toBe(404)
-//     })
+    let lessonId: number;
 
-// })
+    it('Should respond with count 0 if no lesson',async () => {
+
+        const result = await prisma.aulas.count()
+        expect (result).toBe(0)
+    })
+
+    it('Should respond with status 200 if specific lesson exists',async () => {
+
+        const lesson = await createLesson()
+
+        const lessonResponse = await api.post("/aulas").send(lesson);
+        lessonId = lessonResponse.body.id
+
+        const result = await api.get(`/aulas/${lessonId}`)
+
+        expect(result.status).toBe(200)
+    })
+
+    it(`Should respond with status 404 if specific lesson doesn't exists`,async () => {
+
+        const result = await api.get(`/aulas/0`)
+
+        expect(result.status).toBe(404)
+    })
+
+    afterAll(async () => {
+        await prisma.aulas.deleteMany({})
+        await prisma.turmas.deleteMany({})
+        await prisma.materias.deleteMany({})
+    })
+
+})
